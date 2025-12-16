@@ -11,8 +11,6 @@ export const ContactInfo = () => {
       <Input LabelName={"First name"} placeholderName={"Your first name"} />
       <Input LabelName={"Last name"} placeholderName={"Your last name"} />
       <Input LabelName={"Username"} placeholderName={"Your username"} />
-
-      <Footer />
     </div>
   );
 };
