@@ -2,8 +2,28 @@ import React from "react";
 import { Header } from "../ui/Header";
 import { Footer } from "../ui/Footer";
 import { Input } from "../ui/Input";
+import { Button } from "../Button";
+import { validateStepThree } from "@/Utils/validators";
 
-export const ProfileImage = () => {
+export const ProfileImage = ({
+  step,
+  handleClick,
+  handlePrev,
+  handleChange,
+  formValues,
+  formErrors,
+  setFormErrors,
+  errors,
+}) => {
+  const handleSubmitThree = () => {
+    const { errors, isValid } = validateStepThree(formValues);
+
+    setFormErrors(errors);
+
+    if (isValid) {
+      handleClick();
+    }
+  };
   return (
     <div>
       <Header />
@@ -12,6 +32,8 @@ export const ProfileImage = () => {
         type="date"
         min="1970-01-01"
         max="Date.now"
+        onChange={handleChange}
+        errors={formErrors}
       />
       <Input
         type="file"
@@ -25,6 +47,11 @@ export const ProfileImage = () => {
         </div>
         <p className="pt-2">Add image</p>
       </div>
+      <Button
+        step={step}
+        handleClick={handleSubmitThree}
+        handlePrev={handlePrev}
+      />
     </div>
   );
 };
