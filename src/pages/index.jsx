@@ -5,9 +5,6 @@ import {
   ProfileImage,
   Success,
 } from "@/components/steps";
-import { Header } from "@/components/ui/Header";
-import { Input } from "@/components/ui/Input";
-import { Footer } from "@/components/ui/Footer";
 import { initialValues } from "@/components/constant/initial";
 
 export const Home = () => {
