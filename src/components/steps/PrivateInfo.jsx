@@ -4,6 +4,7 @@ import { Footer } from "../ui/Footer";
 import { Input } from "../ui/Input";
 import { Button } from "../Button";
 import { validateStepTwo } from "@/Utils/validators";
+import { saveFormValues } from "@/Utils/localstorage";
 
 export const PrivateInfo = ({
   step,
@@ -23,16 +24,19 @@ export const PrivateInfo = ({
     if (isValid) {
       handleClick();
     }
+    saveFormValues(formValues, step);
   };
   return (
-    <div>
+    <div className="flex flex-col justify-between p-8 bg-white rounded-lg">
       <Header />
       <Input
+        type="text"
         onChange={handleChange}
         errors={formErrors}
         name="email"
         LabelName={"Email"}
         placeholderName={"Your email"}
+        value={formValues.email}
       />
       <Input
         onChange={handleChange}
@@ -40,20 +44,25 @@ export const PrivateInfo = ({
         LabelName={"Phone number"}
         placeholderName={"Your number"}
         name="phoneNumber"
+        value={formValues.phoneNumber}
       />
       <Input
+        type="password"
         onChange={handleChange}
         errors={formErrors}
         LabelName={"Password"}
         placeholderName={"Your password"}
         name="password"
+        value={formValues.password}
       />
       <Input
+        type="password"
         onChange={handleChange}
         errors={formErrors}
         LabelName={"Confirm password"}
         placeholderName={"Confirm password "}
         name="confirmPassword"
+        value={formValues.confirmPassword}
       />
       <Button
         step={step}

@@ -7,10 +7,10 @@ export const validateStepOne = (formValues) => {
     errors.firstName = "Нэрээ оруулна уу!";
   }
   if (isEmpty(formValues.lastName)) {
-    errors.firstName = "Овогоо оруулна уу!";
+    errors.lastName = "Овогоо оруулна уу!";
   }
   if (isEmpty(formValues.userName)) {
-    errors.firstName = "Хэрэглэгчийн Нэрээ оруулна уу!";
+    errors.userName = "Хэрэглэгчийн Нэрээ оруулна уу!";
   }
   const isValid = Object.keys(errors).length === 0;
   return { errors, isValid };
@@ -20,7 +20,7 @@ export const validateStepTwo = (formValues) => {
   const errors = {};
 
   if (isEmpty(formValues.email)) {
-    errors.firstName = "Email-ээ оруулна уу!";
+    errors.email = "Email-ээ оруулна уу!";
   } else {
     if (!isEmail(formValues.email)) {
       errors.email = "zuv Email-ээ оруулна уу!";
@@ -56,14 +56,14 @@ export const validateStepTwo = (formValues) => {
 export const validateStepThree = (formValues) => {
   const errors = {};
 
-  if (isEmpty(formValues.birthday)) {
-    errors.firstName = "Төрсөн өдөрөө оруулна уу!";
-  } else if (formValues.birthday > new Date()) {
-    errors.birthday = "odoogos ih bhgu!";
-  } else if (formValues.birthday) {
+  if (isEmpty(formValues.birthDay)) {
+    errors.birthDay = "Төрсөн өдөрөө оруулна уу!";
+  } else if (formValues.birthDay > new Date()) {
+    errors.birthDay = "odoogos ih bhgu!";
+  } else if (formValues.birthDay) {
   }
-  if (isEmpty(formValues.profileImage)) {
-    errors.profileImage = "Зурагаа оруулна уу!";
+  if (isEmpty(formValues.profile)) {
+    errors.profile = "Зурагаа оруулна уу!";
   }
 
   const isValid = Object.keys(errors).length === 0;

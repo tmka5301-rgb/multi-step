@@ -3,7 +3,7 @@ import { Input } from "../ui/Input";
 import { Header } from "../ui/Header";
 import { validateStepOne } from "@/Utils/validators";
 import { Button } from "../Button";
-import { ErrorMessage } from "../ui/ErrorMessage";
+import { saveFormValues } from "@/Utils/localstorage";
 
 export const ContactInfo = ({
   step,
@@ -19,14 +19,15 @@ export const ContactInfo = ({
     const { errors, isValid } = validateStepOne(formValues);
 
     setFormErrors(errors);
-
+    console.log(isValid);
     if (isValid) {
       handleClick();
     }
+    saveFormValues(formValues, step);
   };
 
   return (
-    <div>
+    <div className="flex flex-col justify-between p-8 bg-white rounded-lg">
       <Header />
 
       <div>
@@ -36,6 +37,7 @@ export const ContactInfo = ({
           LabelName={"First name"}
           placeholderName={"Your first name"}
           name="firstName"
+          value={formValues.firstName}
         />
         <Input
           onChange={handleChange}
@@ -43,6 +45,7 @@ export const ContactInfo = ({
           LabelName={"Last name"}
           placeholderName={"Your last name"}
           name="lastName"
+          value={formValues.lastName}
         />
         <Input
           onChange={handleChange}
@@ -50,6 +53,7 @@ export const ContactInfo = ({
           LabelName={"Username"}
           placeholderName={"Your username"}
           name="userName"
+          value={formValues.userName}
         />
       </div>
       <Button step={step} handleClick={handleSubmit} handlePrev={handlePrev} />
