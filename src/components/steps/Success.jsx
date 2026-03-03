@@ -2,7 +2,7 @@ import React from "react";
 
 export const Success = () => {
   return (
-    <div className="space-y-2 mb-7">
+    <div className="flex flex-col justify-between p-8 bg-white rounded-lg">
       <div>
         <img className="w-15 h-15" src="./pinecone.png" alt="" />
       </div>

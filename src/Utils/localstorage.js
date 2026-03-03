@@ -10,3 +10,7 @@ export const retrieveFormValues = () => {
 
   return value ? JSON.parse(value) : null;
 };
+
+export const deleteFormValues = () => {
+  localStorage.removeItem("formValue");
+};

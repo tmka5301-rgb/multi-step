@@ -1,16 +1,15 @@
-import React from "react";
-import { Header } from "../ui/Header";
-import { Footer } from "../ui/Footer";
-import { Input } from "../ui/Input";
-import { Button } from "../Button";
-import { validateStepThree } from "@/Utils/validators";
 import { saveFormValues } from "@/Utils/localstorage";
+import { validateStepThree } from "@/Utils/validators";
+import { Button } from "../Button";
+import { Header } from "../ui/Header";
+import { Input } from "../ui/Input";
 
 export const ProfileImage = ({
   step,
   handleClick,
   handlePrev,
   handleChange,
+  handleChangeProfile,
   formValues,
   formErrors,
   isDragging,
@@ -24,7 +23,7 @@ export const ProfileImage = ({
   setImageUrl,
   setIsDragging,
   setFormErrors,
-
+  profile,
   errors,
 }) => {
   const handleSubmitThree = () => {
@@ -37,6 +36,7 @@ export const ProfileImage = ({
     }
     saveFormValues(formValues, step);
   };
+  console.log(formValues.profile);
   return (
     <div className="flex flex-col justify-between p-8 bg-white rounded-lg">
       <Header />
@@ -52,10 +52,10 @@ export const ProfileImage = ({
         <input
           type="file"
           name="profile"
-          LabelValue={"Profile image"}
+          // la={"Profile image"}
           hidden
           errors={formErrors}
-          onChange={handleChange}
+          onChange={handleChangeProfile}
           ref={inputRef}
         />
 
@@ -92,12 +92,13 @@ export const ProfileImage = ({
           }}
         >
           <div className="flex justify-center items-center rounded-full w-7 h-7 bg-white">
-            <img src="/image.png" alt="" className="w-3 h-3" />
+            <img src="/Pinecone.png" alt="" className="w-3 h-3" />
           </div>
           <div>Browse or drop image</div>{" "}
-          {imageUrl && (
+          {formValues.profile && (
             <img
-              src={imageUrl}
+              src={formValues.profile}
+              // value={formValues.profile}
               alt="image"
               style={{
                 width: 416,

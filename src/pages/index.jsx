@@ -46,6 +46,8 @@ export const Home = () => {
   const handleDrop = (event) => {
     event.preventDefault();
     const uploadedImage = Array.from(event.dataTransfer.files).at(0);
+    console.log(uploadedImage);
+    console.log(event);
     handleUploadImage(uploadedImage);
   };
   const handleDragOver = (event) => {
@@ -67,32 +69,41 @@ export const Home = () => {
     setFormValues((previous) => ({ ...previous, [name]: value }));
   };
   const Container = [ContactInfo, PrivateInfo, ProfileImage, Success][step];
+
   useEffect(() => {
     const valueFromLocalStorage = retrieveFormValues();
+    setFormValues(valueFromLocalStorage);
+    setStep(valueFromLocalStorage.step);
+    console.log(setStep);
   }, []);
 
+  // const handleSubmit = () => {
+  //   localStorage.setItem(
+  //     "formValue",
+  //     JSON.stringify({ ...formValues, step: step + 1 }),
+  //   );
+  // };
+
   return (
-    <div className="flex justify-center items-center ">
-      <div className="bg-sky-200 p-10 rounded-md">
-        <Container
-          handleChange={handleChange}
-          handleClick={handleClick}
-          handlePrev={handlePrev}
-          step={step}
-          formValues={formValues}
-          formErrors={formErrors}
-          setFormErrors={setFormErrors}
-          isDragging={isDragging}
-          imageUrl={imageUrl}
-          handleDragOver={handleDragOver}
-          handleDragLeave={handleDragLeave}
-          handleDrop={handleDrop}
-          inputRef={inputRef}
-          clearImage={clearImage}
-          handleChangeProfile={handleChangeProfile}
-          handleBrowserClick={handleBrowserClick}
-        />
-      </div>
+    <div className="min-h-screen flex items-center justify-center bg-linear-to-r from-gray-600 to-blue-950  ">
+      <Container
+        handleChange={handleChange}
+        handleClick={handleClick}
+        handlePrev={handlePrev}
+        step={step}
+        formValues={formValues}
+        formErrors={formErrors}
+        setFormErrors={setFormErrors}
+        isDragging={isDragging}
+        imageUrl={imageUrl}
+        handleDragOver={handleDragOver}
+        handleDragLeave={handleDragLeave}
+        handleDrop={handleDrop}
+        inputRef={inputRef}
+        clearImage={clearImage}
+        handleChangeProfile={handleChangeProfile}
+        handleBrowserClick={handleBrowserClick}
+      />
     </div>
   );
 };
