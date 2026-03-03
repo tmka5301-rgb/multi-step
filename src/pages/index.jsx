@@ -72,9 +72,10 @@ export const Home = () => {
 
   useEffect(() => {
     const valueFromLocalStorage = retrieveFormValues();
-    setFormValues(valueFromLocalStorage);
-    setStep(valueFromLocalStorage.step);
-    console.log(setStep);
+    if (valueFromLocalStorage) {
+      setFormValues(valueFromLocalStorage);
+      setStep(valueFromLocalStorage.step ?? 0);
+    }
   }, []);
 
   // const handleSubmit = () => {

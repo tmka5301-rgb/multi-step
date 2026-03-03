@@ -15,16 +15,11 @@ export const ProfileImage = ({
   isDragging,
   inputRef,
   handleBrowserClick,
-  imageUrl,
   handleDrop,
   handleDragOver,
   handleDragLeave,
   clearImage,
-  setImageUrl,
-  setIsDragging,
   setFormErrors,
-  profile,
-  errors,
 }) => {
   const handleSubmitThree = () => {
     const { errors, isValid } = validateStepThree(formValues);
@@ -98,7 +93,7 @@ export const ProfileImage = ({
           {formValues.profile && (
             <img
               src={formValues.profile}
-              // value={formValues.profile}
+              value={formValues.profile}
               alt="image"
               style={{
                 width: 416,
