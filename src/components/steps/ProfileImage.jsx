@@ -1,4 +1,4 @@
-import { saveFormValues } from "@/Utils/localstorage";
+import { deleteFormValues, saveFormValues } from "@/Utils/localstorage";
 import { validateStepThree } from "@/Utils/validators";
 import { Button } from "../Button";
 import { Header } from "../ui/Header";
@@ -28,6 +28,7 @@ export const ProfileImage = ({
 
     if (isValid) {
       handleClick();
+      deleteFormValues();
     }
     saveFormValues(formValues, step);
   };
