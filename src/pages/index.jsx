@@ -78,13 +78,6 @@ export const Home = () => {
     }
   }, []);
 
-  // const handleSubmit = () => {
-  //   localStorage.setItem(
-  //     "formValue",
-  //     JSON.stringify({ ...formValues, step: step + 1 }),
-  //   );
-  // };
-
   return (
     <div className="min-h-screen flex items-center justify-center bg-linear-to-r from-gray-600 to-blue-950  ">
       <Container

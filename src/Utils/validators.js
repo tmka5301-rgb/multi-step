@@ -69,3 +69,15 @@ export const validateStepThree = (formValues) => {
   const isValid = Object.keys(errors).length === 0;
   return { errors, isValid };
 };
+export const validateStepSuccess = (formValues) => {
+  const errors = {};
+
+  if (isEmpty(formValues.birthDay)) {
+    errors.firstName = "Нэрээ оруулна уу!";
+  }
+  if (isEmpty(formValues.profile)) {
+    errors.lastName = "Zuraga oruul";
+  }
+  const isValid = Object.keys(errors).length === 0;
+  return { errors, isValid };
+};

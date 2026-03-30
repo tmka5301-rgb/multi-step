@@ -47,7 +47,6 @@ export const ProfileImage = ({
         <input
           type="file"
           name="profile"
-          // la={"Profile image"}
           hidden
           errors={formErrors}
           onChange={handleChangeProfile}
