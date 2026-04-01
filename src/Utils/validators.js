@@ -58,11 +58,25 @@ export const validateStepThree = (formValues) => {
 
   if (isEmpty(formValues.birthDay)) {
     errors.birthDay = "Төрсөн өдөрөө оруулна уу!";
-  } else if (formValues.birthDay > new Date()) {
-    errors.birthDay = "odoogos ih bhgu!";
-  } else if (formValues.birthDay) {
+  } else {
+    const birthDate = new Date(formValues.birthDay);
+    const today = new Date();
+
+    // 18 насны огноо тооцоолох
+    const age18Date = new Date(
+      birthDate.getFullYear() + 18,
+      birthDate.getMonth(),
+      birthDate.getDate(),
+    );
+
+    if (birthDate > today) {
+      errors.birthDay = "Өнөөдрөөс их байж болохгүй!";
+    } else if (age18Date > today) {
+      errors.birthDay = "18 насанд хүрсэн байх ёстой!";
+    }
   }
-  if (isEmpty(formValues.profile)) {
+
+  if (!formValues.profile) {
     errors.profile = "Зурагаа оруулна уу!";
   }
 
